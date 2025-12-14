@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <span class="text-blue-600 text-xl font-bold">Learn<span class="text-gray-800">Hub</span></span>
+            </div>
+          </div>
+
+          <!-- Menu Desktop -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="../views/auth/login/login.html" class="block text-blue-900 hover:text-blue-600 px-3 py-2 font-medium">Login</a>
+          </div>
+
+          <!-- Menu Mobile Toggle -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a href="../views/auth/login/login.html" class="block text-blue-900 hover:text-blue-600 px-3 py-2 font-medium">login</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="pt-20">
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div class="flex flex-col md:flex-row items-center">
+          <!-- Text Content -->
+          <div class="w-full md:w-1/2 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              Welcome to <span class="text-blue-600">LearnHub</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-8">
+              Your platform for online learning. Explore a wide range of courses
+              and improve your skills from anywhere, anytime.
+            </p>
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              
+            </div>
+          </div>
+
+          <!-- Illustration/Image -->
+          <div class="w-full md:w-1/2 mt-12 md:mt-0 fade-in" style="animation-delay: 0.3s">
+            <div class="relative mx-auto w-full max-w-md">
+              <img src="assets/img/wellcome.jpg" alt="Welcome Illustration" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script>
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !mobileMenuButton.contains(event.target) &&
+          !mobileMenu.contains(event.target)
+        ) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

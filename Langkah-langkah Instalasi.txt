@@ -1,0 +1,33 @@
+Langkah-langkah Instalasi
+
+1. Siapkan Tools
+Pastikan kamu sudah menginstall:
+- XAMPP (atau tools sejenis seperti Laragon)
+- Browser modern (Chrome, Firefox, Edge)
+- Code editor seperti VS Code
+
+2. Pindahkan Folder ke htdocs
+Copy folder login-app/ ke direktori:
+C:\xampp\htdocs\
+
+3. Import Database
+- Buka phpMyAdmin via browser: http://localhost/phpmyadmin
+- Buat database baru, misalnya dengan nama: login_register_db
+- Import file SQL yang ada di dalam folder config bernama learninglite: login-app/config/learninglite.sql
+
+4. Cek & Ubah Koneksi Database
+Buka folder config dan buka file koneksi.php: login-app/config/koneksi.php
+Pastikan isi koneksi sesuai XAMPP kamu, misalnya:
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "learninglite";
+
+5. Jalankan Aplikasi di Browser
+Buka link berikut: http://localhost/login-app/
+
+Link WA Admin (Reset Password)
+Kamu bisa atur link WhatsApp admin di folder lupa-password lalu buka index.php: lupa-password/index.php
+const nomorAdmin = "62xxxxxxxx"; // Ganti dengan nomor WA admin kamu
+
+

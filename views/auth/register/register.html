@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Create Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body class="bg-gradient-to-br from-green-50 to-green-100 min-h-screen flex items-center justify-center px-4">
+  <div id="toast" class="fixed top-5 right-5 z-50 hidden px-4 py-3 rounded-xl shadow-lg text-white transition-all duration-300"></div>
+
+  <div class="bg-white shadow-2xl rounded-2xl overflow-hidden max-w-4xl w-full grid md:grid-cols-2">
+    
+    <!-- Left Section -->
+    <div class="hidden md:flex flex-col items-center justify-center bg-green-600 text-white p-10">
+      <h2 class="text-3xl font-bold mb-4">Register Now</h2>
+      <p class="text-sm text-center">
+        Create your new account and start exploring all our great features.
+      </p>
+      <img src="../../../assets/img/register.png" alt="Register Illustration" class="mt-8">
+    </div>
+
+    <!-- Register Form -->
+    <div class="p-8 md:p-12">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Create a New Account</h2>
+
+      <form id="registerForm" onsubmit="return validateForm()" action="../../../includes/procces/register.php" method="POST" class="space-y-5">
+
+        <!-- Full Name -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-600">Full Name</label>
+          <div class="relative mt-1">
+            <input type="text" id="name" name="name" required
+              placeholder="Your full name"
+              class="w-full pl-10 pr-4 py-2 border rounded-xl focus:ring-2 focus:ring-green-500 focus:outline-none" />
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i data-feather="user"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+          <div class="relative mt-1">
+            <input type="email" id="email" name="email" required
+              placeholder="example@gmail.com"
+              class="w-full pl-10 pr-4 py-2 border rounded-xl focus:ring-2 focus:ring-green-500 focus:outline-none" />
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i data-feather="mail"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+          <div class="relative mt-1">
+            <input type="password" id="password_hash" name="password" required
+              placeholder="********"
+              class="w-full pl-10 pr-10 py-2 border rounded-xl focus:ring-2 focus:ring-green-500 focus:outline-none" />
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i data-feather="lock"></i>
+            </div>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
+              onclick="togglePassword('password', 'eyeIcon1')">
+              <i id="eyeIcon1" data-feather="eye"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <label for="confirm-password" class="block text-sm font-medium text-gray-600">Confirm Password</label>
+          <div class="relative mt-1">
+            <input type="password" id="confirm-password" name="confirm-password" required
+              placeholder="********"
+              class="w-full pl-10 pr-10 py-2 border rounded-xl focus:ring-2 focus:ring-green-500 focus:outline-none" />
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i data-feather="lock"></i>
+            </div>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer"
+              onclick="togglePassword('confirm-password', 'eyeIcon2')">
+              <i id="eyeIcon2" data-feather="eye"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div>
+          <label for="role" class="block text-sm font-medium text-gray-600">Select Role</label>
+          <select id="role" name="role"
+            class="w-full py-2 px-4 border rounded-xl focus:ring-2 focus:ring-green-500 focus:outline-none">
+            <option value="student" selected>Student</option>
+            <option value="instructor">Instructor</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <!-- Terms -->
+        <div class="flex items-start">
+          <input type="checkbox" id="terms" required class="mt-1 mr-2 rounded border-gray-300" />
+          <label for="terms" class="text-sm text-gray-600">
+            I agree to the
+            <a href="syarat-ketentuan.html" class="text-green-600 hover:underline">
+              Terms & Conditions
+            </a>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit"
+          class="w-full py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all">
+          Register
+        </button>
+
+        <!-- Login -->
+        <p class="text-center text-sm text-gray-500">
+          Already have an account?
+          <a href="../login/login.html" class="text-green-600 hover:underline">
+            Sign in here
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    feather.replace();
+
+    function togglePassword(fieldId, iconId) {
+      const input = document.getElementById(fieldId);
+      const icon = document.getElementById(iconId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.setAttribute('data-feather', 'eye-off');
+      } else {
+        input.type = 'password';
+        icon.setAttribute('data-feather', 'eye');
+      }
+      feather.replace();
+    }
+
+    function validateForm() {
+      const password = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm-password").value;
+
+      if (password !== confirm) {
+        showToast("Passwords do not match!", "red");
+        return false;
+      }
+      return true;
+    }
+
+    function showToast(message, color = 'green') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `fixed top-5 right-5 z-50 px-4 py-3 rounded-xl shadow-lg text-white bg-${color}-500 opacity-0`;
+
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('opacity-100'), 10);
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 3000);
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('sukses')) {
+      const message = urlParams.get('sukses') === 'daftar_berhasil'
+        ? 'Registration successful! Please log in.'
+        : 'Success!';
+      showToast(message, 'green');
+    } else if (urlParams.has('error')) {
+      const message = {
+        'email_terdaftar': 'Email is already registered!',
+        'gagal_mendaftar': 'An error occurred during registration.',
+      }[urlParams.get('error')] || 'An error occurred.';
+      showToast(message, 'red');
+    }
+  </script>
+</body>
+</html>
