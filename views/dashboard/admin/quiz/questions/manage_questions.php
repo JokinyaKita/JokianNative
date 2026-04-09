@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'superadmin') {
     header("Location: ../../login.php?error=access_denied");
     exit;
 }

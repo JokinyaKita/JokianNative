@@ -3,108 +3,254 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Learning Platform</title>
+    <title>Learning Lite | Belajar Lebih Terarah</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="assets/css/ui-polish.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                navy: "#0f172a",
+                ocean: "#1d4ed8",
+                sky: "#0ea5e9",
+                mint: "#10b981",
+                sand: "#f8fafc",
+              },
+            },
+          },
+        },
+      };
+    </script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
-      body {
-        font-family: "Poppins", sans-serif;
+      .hero-noise {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.08) 0.6px, transparent 0.6px);
+        background-size: 16px 16px;
+        opacity: 0.22;
+        pointer-events: none;
       }
 
-      .fade-in {
-        animation: fadeIn 1s ease-in-out;
+      .lift-card {
+        transition: transform 0.24s ease, box-shadow 0.24s ease;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .lift-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 26px 44px -24px rgba(15, 23, 42, 0.42);
       }
 
-      .hover-scale {
-        transition: transform 0.3s ease;
+      .moving-bar {
+        background: linear-gradient(90deg, #2563eb, #0ea5e9, #10b981, #2563eb);
+        background-size: 240% 240%;
+        animation: movingBar 7s ease infinite;
       }
 
-      .hover-scale:hover {
-        transform: scale(1.05);
+      @keyframes movingBar {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
       }
     </style>
   </head>
-  <body class="bg-gray-50">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full z-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <div class="flex-shrink-0 flex items-center">
-              <span class="text-blue-600 text-xl font-bold">Learn<span class="text-gray-800">Hub</span></span>
-            </div>
+  <body class="ui-grid-bg min-h-screen text-slate-900">
+    <div class="relative isolate overflow-hidden">
+      <div class="hero-noise"></div>
+      <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-sky-300/35 blur-3xl"></div>
+      <div class="absolute top-24 right-0 h-80 w-80 rounded-full bg-emerald-300/30 blur-3xl"></div>
+
+      <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/70 backdrop-blur">
+        <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <a href="index.html" class="text-xl font-bold tracking-tight text-brand-navy">Learning<span class="text-brand-ocean">Lite</span></a>
+
+          <div class="hidden items-center gap-1 md:flex">
+            <a href="#fitur" class="hover-lift rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Fitur</a>
+            <a href="#jalur" class="hover-lift rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Jalur</a>
+            <a href="#cerita" class="hover-lift rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Cerita</a>
+            <a href="views/auth/login/login.html" class="hover-lift rounded-xl px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Masuk</a>
+            <a href="views/auth/register/register.html" class="hover-lift ui-glow rounded-xl bg-brand-navy px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">Daftar Gratis</a>
           </div>
 
-          <!-- Menu Desktop -->
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="../views/auth/login/login.html" class="block text-blue-900 hover:text-blue-600 px-3 py-2 font-medium">Login</a>
-          </div>
+          <button id="mobile-menu-button" class="rounded-xl border border-slate-300 p-2 md:hidden" aria-label="Buka menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </nav>
 
-          <!-- Menu Mobile Toggle -->
-          <div class="md:hidden flex items-center">
-            <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600">
-              <i class="fas fa-bars text-2xl"></i>
-            </button>
+        <div id="mobile-menu" class="hidden border-t border-slate-200/70 bg-white/95 px-4 py-3 md:hidden">
+          <div class="flex flex-col gap-2">
+            <a href="#fitur" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Fitur</a>
+            <a href="#jalur" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Jalur</a>
+            <a href="#cerita" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cerita</a>
+            <a href="views/auth/login/login.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Masuk</a>
+            <a href="views/auth/register/register.html" class="rounded-lg bg-brand-navy px-3 py-2 text-sm font-semibold text-white">Daftar Gratis</a>
           </div>
         </div>
-      </div>
+      </header>
 
-      <!-- Menu Mobile -->
-      <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="../views/auth/login/login.html" class="block text-blue-900 hover:text-blue-600 px-3 py-2 font-medium">login</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <main class="pt-20">
-      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div class="flex flex-col md:flex-row items-center">
-          <!-- Text Content -->
-          <div class="w-full md:w-1/2 fade-in">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Welcome to <span class="text-blue-600">LearnHub</span>
+      <main class="relative z-10 mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+        <section class="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <span class="reveal-up inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
+              Platform Belajar Online
+            </span>
+            <h1 class="reveal-up delay-1 mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              Bukan Sekadar Nonton Materi,
+              <span class="bg-gradient-to-r from-brand-ocean to-brand-mint bg-clip-text text-transparent">Tapi Naik Level Nyata.</span>
             </h1>
-            <p class="text-lg text-gray-600 mb-8">
-              Your platform for online learning. Explore a wide range of courses
-              and improve your skills from anywhere, anytime.
+            <p class="reveal-up delay-2 mt-5 max-w-xl text-base text-slate-600 sm:text-lg">
+              Learning Lite dirancang seperti peta belajar: jelas titik awalnya, jelas targetnya, dan jelas progresnya. Cocok buat siswa yang ingin konsisten tanpa bingung langkah berikutnya.
             </p>
 
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              
+            <div class="reveal-up delay-2 mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="views/auth/register/register.html" class="hover-lift ui-glow inline-flex items-center justify-center rounded-xl bg-brand-ocean px-6 py-3 text-sm font-bold text-white hover:bg-blue-700">
+                Mulai Belajar Sekarang
+              </a>
+              <a href="views/auth/login/login.html" class="hover-lift inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50">
+                Saya Sudah Punya Akun
+              </a>
+            </div>
+
+            <div class="mt-10 grid max-w-xl grid-cols-3 gap-3 text-center">
+              <div class="ui-panel rounded-xl p-3">
+                <p class="text-2xl font-extrabold text-brand-ocean">125+</p>
+                <p class="text-xs font-semibold text-slate-500">Learning Units</p>
+              </div>
+              <div class="ui-panel rounded-xl p-3">
+                <p class="text-2xl font-extrabold text-emerald-600">18m</p>
+                <p class="text-xs font-semibold text-slate-500">Rata-rata Sesi</p>
+              </div>
+              <div class="ui-panel rounded-xl p-3">
+                <p class="text-2xl font-extrabold text-brand-navy">91%</p>
+                <p class="text-xs font-semibold text-slate-500">Quiz Completion</p>
+              </div>
             </div>
           </div>
 
-          <!-- Illustration/Image -->
-          <div class="w-full md:w-1/2 mt-12 md:mt-0 fade-in" style="animation-delay: 0.3s">
-            <div class="relative mx-auto w-full max-w-md">
-              <img src="assets/img/wellcome.jpg" alt="Welcome Illustration" />
+          <div class="relative">
+            <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-200/50 via-cyan-100/40 to-emerald-100/50 blur-xl"></div>
+            <div class="ui-panel relative rounded-[2rem] p-4 ui-glow">
+              <img src="assets/img/wellcome.jpg" alt="Siswa belajar online" class="h-auto w-full rounded-[1.4rem] object-cover" />
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <p class="text-xs font-bold uppercase tracking-[0.17em] text-slate-500">Pembelajaran Aktif</p>
+                  <p class="mt-1 text-sm font-semibold text-slate-800">Sprint mingguan + quiz refleksi</p>
+                </div>
+                <div class="rounded-xl border border-slate-200 bg-white px-4 py-3">
+                  <p class="text-xs font-bold uppercase tracking-[0.17em] text-slate-500">Progress Visual</p>
+                  <p class="mt-1 text-sm font-semibold text-slate-800">Heatmap progres harian yang jelas</p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
+
+        <section id="fitur" class="mt-16 sm:mt-20">
+          <div class="mb-6 flex items-end justify-between gap-4">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Core Value</p>
+              <h2 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Fitur Yang Bikin Belajar Nempel</h2>
+            </div>
+            <div class="hidden h-2 w-44 rounded-full moving-bar sm:block"></div>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <article class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">Adaptive Quiz</p>
+              <h3 class="mt-2 text-lg font-bold">Soal Menyesuaikan Perkembangan</h3>
+              <p class="mt-2 text-sm text-slate-600">Pertanyaan dipilih agar kamu terus tertantang tanpa merasa keteteran.</p>
+            </article>
+
+            <article class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Learning Streak</p>
+              <h3 class="mt-2 text-lg font-bold">Bikin Konsisten Jadi Kebiasaan</h3>
+              <p class="mt-2 text-sm text-slate-600">Pantau streak dan milestone supaya momentum belajar tetap terjaga.</p>
+            </article>
+
+            <article class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-700">Mentor-ready</p>
+              <h3 class="mt-2 text-lg font-bold">Feedback Langsung dari Pengajar</h3>
+              <p class="mt-2 text-sm text-slate-600">Instruktur bisa cepat melihat area yang harus ditingkatkan tiap siswa.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="jalur" class="mt-16 sm:mt-20">
+          <div class="ui-panel rounded-3xl p-6 sm:p-8">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Learning Path</p>
+            <h2 class="mt-2 text-2xl font-bold sm:text-3xl">Alur Belajar Ringkas, Tapi Tajam</h2>
+            <div class="mt-6 grid gap-4 md:grid-cols-3">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 01</p>
+                <h3 class="mt-2 font-bold text-slate-800">Explore</h3>
+                <p class="mt-1 text-sm text-slate-600">Pilih course sesuai target mingguanmu.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 02</p>
+                <h3 class="mt-2 font-bold text-slate-800">Practice</h3>
+                <p class="mt-1 text-sm text-slate-600">Selesaikan modul dan quiz mikro harian.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Step 03</p>
+                <h3 class="mt-2 font-bold text-slate-800">Track</h3>
+                <p class="mt-1 text-sm text-slate-600">Lihat progres visual dan next action otomatis.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cerita" class="mt-16 sm:mt-20">
+          <div class="mb-6">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">Student Story</p>
+            <h2 class="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Apa Kata Pengguna Learning Lite</h2>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3">
+            <blockquote class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-sm text-slate-700">"Dulu gampang berhenti di tengah. Sekarang karena alurnya jelas, saya jadi rutin sampai selesai modul."</p>
+              <footer class="mt-3 text-xs font-bold uppercase tracking-[0.15em] text-slate-500">Rina, Student</footer>
+            </blockquote>
+
+            <blockquote class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-sm text-slate-700">"Sebagai instructor, saya lebih cepat tahu bagian mana yang bikin siswa kesulitan."</p>
+              <footer class="mt-3 text-xs font-bold uppercase tracking-[0.15em] text-slate-500">Andi, Instructor</footer>
+            </blockquote>
+
+            <blockquote class="ui-panel lift-card rounded-2xl p-5">
+              <p class="text-sm text-slate-700">"Dashboard ringkas tapi informatif. Monitoring user dan course jadi jauh lebih gampang."</p>
+              <footer class="mt-3 text-xs font-bold uppercase tracking-[0.15em] text-slate-500">Nadia, Superadmin</footer>
+            </blockquote>
+          </div>
+        </section>
+
+        <section class="mt-16 sm:mt-20">
+          <div class="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-900 px-6 py-10 text-white sm:px-10">
+            <div class="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-blue-500/30 blur-3xl"></div>
+            <div class="absolute -left-16 bottom-0 h-40 w-40 rounded-full bg-emerald-400/25 blur-3xl"></div>
+            <div class="relative">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Start Today</p>
+              <h2 class="mt-2 text-2xl font-bold sm:text-3xl">Siap Ubah Cara Belajar Kamu?</h2>
+              <p class="mt-2 max-w-2xl text-sm text-slate-200 sm:text-base">Buat akun gratis, pilih jalur belajar yang kamu butuhkan, dan rasakan progress yang lebih terarah sejak hari pertama.</p>
+              <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+                <a href="views/auth/register/register.html" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-slate-900 hover:bg-slate-100">Daftar Sekarang</a>
+                <a href="views/auth/login/login.html" class="inline-flex items-center justify-center rounded-xl border border-slate-400 px-6 py-3 text-sm font-bold text-white hover:bg-white/10">Masuk Akun</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="mx-auto max-w-7xl px-4 pb-10 pt-6 text-xs text-slate-500 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-start justify-between gap-2 border-t border-slate-200 pt-5 sm:flex-row sm:items-center">
+          <p>Learning Lite. Belajar konsisten, hasil lebih jelas.</p>
+          <p>2026</p>
         </div>
-      </section>
-    </main>
+      </footer>
+    </div>
 
-    <footer>
-
-    </footer>
     <script>
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
@@ -114,10 +260,7 @@
       });
 
       document.addEventListener("click", (event) => {
-        if (
-          !mobileMenuButton.contains(event.target) &&
-          !mobileMenu.contains(event.target)
-        ) {
+        if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
           mobileMenu.classList.add("hidden");
         }
       });

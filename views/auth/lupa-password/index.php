@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lupa Password</title>
+  <title>Lupa Password | Learning Lite</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/ui-polish.css" />
 </head>
-<body class="bg-blue-50 flex justify-center items-center min-h-screen">
-  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-md">
+<body class="ui-grid-bg flex justify-center items-center min-h-screen px-4 py-8">
+  <a href="../../../index.html" class="fixed top-5 left-5 z-40 inline-flex items-center gap-2 rounded-xl bg-white/90 border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white transition">
+    ← Kembali ke Beranda
+  </a>
+
+  <div class="ui-panel ui-glow p-8 rounded-2xl w-full max-w-md">
     <h2 class="text-2xl font-bold mb-4 text-center text-blue-700">Lupa Password</h2>
-    <p class="text-sm text-gray-600 text-center mb-6">Masukkan email akun Anda. Kami akan bantu reset password melalui WhatsApp.</p>
+    <p class="text-sm text-gray-600 text-center mb-6">Masukkan email akun Anda. Kami bantu reset password melalui WhatsApp admin.</p>
 
     <form onsubmit="checkEmail(event)" class="space-y-4">
       <div>
@@ -23,7 +28,7 @@
       </div>
       <p id="error-msg" class="text-sm text-red-500 text-center mb-4 hidden"></p>
       <button type="submit"
-              class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+              class="w-full bg-green-600 text-white py-2.5 rounded-lg hover:bg-green-700 transition font-semibold">
         Hubungi via WhatsApp
       </button>
     </form>

@@ -3,22 +3,18 @@ include '../config/koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $name     = htmlspecialchars($_POST['name']);
-    $email    = htmlspecialchars($_POST['email']);
+    $name     = htmlspecialchars(trim($_POST['name'] ?? ''));
+    $email    = htmlspecialchars(trim($_POST['email'] ?? ''));
     $password = $_POST['password'];
-    $role     = $_POST['role'] ?? 'student';
-
-    $allowed_roles = ['student', 'instructor'];
-    if (!in_array($role, $allowed_roles)) {
-        $role = 'student';
-    }
+    // Public registration is restricted to student only.
+    $role     = 'student';
 
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Cek email
     $check = mysqli_query($conn, "SELECT 1 FROM users WHERE email='$email'");
     if (mysqli_num_rows($check) > 0) {
-        header("Location: /views/auth/register/index.html?error=email_exists");
+        header("Location: ../../views/auth/register/register.html?error=email_terdaftar");
         exit;
     }
 
@@ -29,9 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ";
 
     if (mysqli_query($conn, $query)) {
-        header("Location: /views/auth/login/login.html?success=register_success");
+        header("Location: ../../views/auth/login/login.html?sukses=daftar_berhasil");
     } else {
-        header("Location: /views/auth/register/register.html?error=register_failed");
+        header("Location: ../../views/auth/register/register.html?error=gagal_mendaftar");
     }
 
     exit;

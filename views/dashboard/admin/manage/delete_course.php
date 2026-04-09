@@ -2,7 +2,7 @@
 session_start();
 
 // Protect page (admin only)
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'superadmin') {
     header("Location: ../login.php?error=access_denied");
     exit;
 }

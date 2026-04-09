@@ -7,8 +7,8 @@ if (!isset($_SESSION['user'])) {
   exit;
 }
 
-// Ensure the user is an admin
-if ($_SESSION['user']['role'] !== 'admin') {
+// Ensure the user is a superadmin
+if ($_SESSION['user']['role'] !== 'superadmin') {
   header("Location: ../index.html?error=akses_ditolak");
   exit;
 }
@@ -25,27 +25,28 @@ $users = mysqli_query($conn, $query);
 
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Admin</title>
+  <title>Dashboard Superadmin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../assets/css/ui-polish.css" />
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen p-4 sm:p-6">
+<body class="ui-grid-bg min-h-screen p-4 sm:p-6">
   <div class="max-w-6xl mx-auto">
     <!-- Header Section -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-      <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Dashboard Admin</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-gray-800">Dashboard Superadmin</h1>
       <a href="../proses/logout.php" class="text-red-600 hover:underline flex items-center gap-1 text-sm sm:text-base">
         <i data-feather="log-out"></i><span>Logout</span>
       </a>
     </div>
 
     <!-- Users Table Section -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="ui-panel ui-glow rounded-xl overflow-hidden">
       <div class="overflow-x-auto">
         <table class="min-w-full text-sm text-left">
-          <thead class="bg-blue-600 text-white">
+          <thead class="bg-slate-900 text-white">
             <tr>
               <th class="py-3 px-4 whitespace-nowrap">#</th>
               <th class="py-3 px-4 whitespace-nowrap">Nama Lengkap</th>
@@ -78,7 +79,7 @@ $users = mysqli_query($conn, $query);
 
   <footer>
     <div class="text-center text-sm text-gray-500 mt-6">
-      &copy; <?= date("Y"); ?> Dashboard Admin. All rights reserved.
+      &copy; <?= date("Y"); ?> Dashboard Superadmin. All rights reserved.
     </div>
   </footer>
 

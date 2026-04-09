@@ -13,9 +13,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'instructor') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instructor Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/ui-polish.css" />
 </head>
 
-<body class="bg-gradient-to-br from-indigo-50 to-slate-100 min-h-screen">
+<body class="ui-grid-bg min-h-screen">
 
   <!-- Header -->
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
@@ -38,7 +39,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'instructor') {
 
     <!-- Welcome Card -->
     <section class="mb-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div class="ui-panel rounded-2xl p-6 ui-glow">
         <h2 class="text-lg font-semibold text-slate-800">Quick Actions</h2>
         <p class="text-sm text-slate-500 mt-1">
           Choose an option below to create a new course or manage your existing courses.
@@ -51,7 +52,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'instructor') {
       
       <!-- Create Course -->
       <a href="../instructor/course/create_course.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center">
             <!-- icon -->
@@ -68,7 +69,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'instructor') {
 
       <!-- Manage Courses -->
       <a href="../instructor/course/manage_course.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center">
             <!-- icon -->
@@ -84,7 +85,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'instructor') {
       </a>
 
       <!-- Placeholder / Other Actions -->
-      <div class="bg-white border border-dashed border-slate-300 rounded-2xl p-6 shadow-sm">
+      <div class="ui-panel border border-dashed border-slate-300 rounded-2xl p-6 shadow-sm">
         <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center">
           <!-- icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

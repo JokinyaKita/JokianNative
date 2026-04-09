@@ -1,33 +1,56 @@
-Langkah-langkah Instalasi
+1. **Unzip file**
 
-1. Siapkan Tools
-Pastikan kamu sudah menginstall:
-- XAMPP (atau tools sejenis seperti Laragon)
-- Browser modern (Chrome, Firefox, Edge)
-- Code editor seperti VS Code
+   * Klik kanan pada file ZIP yang kamu dapat
+   * Pilih **Extract / Unzip** sampai menjadi folder biasa
 
-2. Pindahkan Folder ke htdocs
-Copy folder login-app/ ke direktori:
-C:\xampp\htdocs\
+2. **Pindahkan folder ke htdocs**
 
-3. Import Database
-- Buka phpMyAdmin via browser: http://localhost/phpmyadmin
-- Buat database baru, misalnya dengan nama: login_register_db
-- Import file SQL yang ada di dalam folder config bernama learninglite: login-app/config/learninglite.sql
+   * Copy atau cut folder hasil unzip tadi
+   * Pindahkan ke folder:
+     **C:/xampp/htdocs/**
 
-4. Cek & Ubah Koneksi Database
-Buka folder config dan buka file koneksi.php: login-app/config/koneksi.php
-Pastikan isi koneksi sesuai XAMPP kamu, misalnya:
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "learninglite";
+3. **Jalankan XAMPP**
 
-5. Jalankan Aplikasi di Browser
-Buka link berikut: http://localhost/login-app/
+   * Buka **XAMPP Control Panel**
+   * Klik **Start** pada:
 
-Link WA Admin (Reset Password)
-Kamu bisa atur link WhatsApp admin di folder lupa-password lalu buka index.php: lupa-password/index.php
-const nomorAdmin = "62xxxxxxxx"; // Ganti dengan nomor WA admin kamu
+     * **Apache**
+     * **MySQL**
+
+4. **Cek website**
+
+   * Buka browser (Chrome / Edge / Firefox)
+   * Ketik alamat berikut:
+     **[http://localhost/learning-lite](http://localhost/learning-lite)**
+   * Pastikan website bisa terbuka
+     (kalau belum, jangan lanjut dulu)
+
+5. **Buat database**
+
+   * Buka browser dan masuk ke:
+     **[http://localhost/phpMyAdmin](http://localhost/phpMyAdmin)**
+   * Klik menu **New**
+   * Isi nama database: **learninglite**
+   * Klik **Create**
+
+6. **Import database**
+
+   * Klik database **learninglite** yang baru dibuat
+   * Pilih menu **Import**
+   * Klik **Choose File**
+   * Ambil file database dari folder project:
+
+     ```
+     includes/config/
+     ```
+
+     (file berformat **.sql**)
+   * Klik **Go**
+
+7. **Selesai**
+
+   Jika tidak ada error, berarti database sudah berhasil
+   Refresh kembali:
+     [http://localhost/learning-lite](http://localhost/learning-lite)**
 
 

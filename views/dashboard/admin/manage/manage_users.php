@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'superadmin') {
     header("Location: ../login.php?error=access_denied");
     exit;
 }
@@ -39,10 +39,16 @@ if (!$result) {
         <p class="text-sm text-slate-500">Search, review, and manage user accounts</p>
       </div>
 
-      <a href="../dashboard.php"
-        class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-xl hover:bg-slate-800 transition text-sm font-semibold">
-        ← Back to Dashboard
-      </a>
+      <div class="flex items-center gap-2">
+        <a href="../reports.php"
+          class="inline-flex items-center gap-2 bg-red-50 text-red-700 px-4 py-2 rounded-xl hover:bg-red-100 transition text-sm font-semibold">
+          Reports
+        </a>
+        <a href="../dashboard.php"
+          class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-xl hover:bg-slate-800 transition text-sm font-semibold">
+          ← Back to Dashboard
+        </a>
+      </div>
     </div>
   </header>
 
@@ -118,7 +124,8 @@ if (!$result) {
             while ($row = mysqli_fetch_assoc($result)):
               $role = strtolower($row['role']);
               $roleClass = "bg-slate-100 text-slate-700";
-              if ($role === 'admin') $roleClass = "bg-red-50 text-red-700";
+              if ($role === 'superadmin') $roleClass = "bg-red-50 text-red-700";
+              if ($role === 'admin') $roleClass = "bg-orange-50 text-orange-700";
               if ($role === 'instructor') $roleClass = "bg-purple-50 text-purple-700";
               if ($role === 'student') $roleClass = "bg-blue-50 text-blue-700";
             ?>

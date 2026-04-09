@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
+  <title>Login | Learning Lite</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/ui-polish.css" />
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex items-center justify-center px-4">
+<body class="ui-grid-bg min-h-screen flex items-center justify-center px-4 py-10">
   <div id="toast" class="fixed top-5 right-5 z-50 hidden px-4 py-3 rounded-xl shadow-lg text-white transition-all duration-300"></div>
-  
-  <div class="bg-white shadow-2xl rounded-2xl overflow-hidden max-w-4xl w-full grid md:grid-cols-2">
+
+  <a href="../../../index.html" class="fixed top-5 left-5 z-40 inline-flex items-center gap-2 rounded-xl bg-white/90 border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white transition">
+    ← Kembali ke Beranda
+  </a>
+
+  <div class="ui-panel ui-glow rounded-3xl overflow-hidden max-w-4xl w-full grid md:grid-cols-2">
     
     <!-- Left Section -->
-    <div class="hidden md:flex flex-col items-center justify-center bg-blue-600 text-white p-10">
-      <h2 class="text-2xl font-bold mb-4">Welcome Back!</h2>
-      <p class="text-sm text-center">
-        Enter your credentials to access your account and start exploring our learning platform.
+    <div class="hidden md:flex flex-col items-center justify-center bg-gradient-to-br from-blue-700 via-blue-600 to-cyan-600 text-white p-10">
+      <h2 class="text-3xl font-bold mb-4">Welcome Back</h2>
+      <p class="text-sm text-center text-blue-100">
+        Login untuk lanjut belajar, cek progress, dan akses materi terbaru kamu.
       </p>
-      <img src="../../../assets/img/login.png" alt="Login Illustration" class="mt-8 rounded-lg shadow-lg">
+      <img src="../../../assets/img/login.png" alt="Login Illustration" class="mt-8 rounded-xl shadow-2xl">
     </div>
 
     <!-- Login Form -->
-    <div class="p-8 md:p-12">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Sign In to Your Account</h2>
+    <div class="p-8 md:p-12 bg-white/90">
+      <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Sign In</h2>
+      <p class="text-sm text-center text-slate-500 mb-6">Masukkan email dan password akun kamu</p>
       
       <form action="../../../includes/procces/login.php" method="POST" class="space-y-5">
         
@@ -68,7 +74,7 @@
         </div>
 
         <!-- Button -->
-        <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all">
+        <button type="submit" class="w-full py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold">
           Sign In
         </button>
 
@@ -121,6 +127,11 @@
       showToast(message, 'green');
     } else if (urlParams.has('error')) {
       const message = {
+        'incorrect_password': 'Incorrect password!',
+        'user_not_found': 'Account not found!',
+        'invalid_role': 'Your account role is not valid.',
+        'access_denied': 'Access denied for this page.',
+        'superadmin_only': 'Only superadmin can access this dashboard.',
         'password_salah': 'Incorrect password!',
         'akun_tidak_ditemukan': 'Account not found!',
       }[urlParams.get('error')] || 'An error occurred.';

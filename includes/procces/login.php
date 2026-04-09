@@ -33,8 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // === REDIRECT SESUAI ROLE ===
         switch ($user['role']) {
-            case 'admin':
+            case 'superadmin':
                 header("Location: ../../views/dashboard/admin/dashboard.php");
+                break;
+
+            case 'admin':
+                session_destroy();
+                header("Location: ../../views/auth/login/login.html?error=superadmin_only");
                 break;
 
             case 'instructor':

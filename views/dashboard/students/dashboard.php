@@ -17,10 +17,11 @@ $user = $_SESSION['user'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/ui-polish.css" />
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+<body class="ui-grid-bg min-h-screen">
 
   <!-- Top Bar -->
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
@@ -42,7 +43,7 @@ $user = $_SESSION['user'];
 
     <!-- Welcome Card -->
     <section class="mb-6">
-      <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
+      <div class="ui-panel rounded-2xl shadow-sm p-6 ui-glow">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">
@@ -80,7 +81,7 @@ $user = $_SESSION['user'];
 
         <!-- Enroll Courses -->
         <a href="enroll/enroll_courses.php"
-           class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+           class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
           <div class="flex items-start justify-between">
             <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center">
               <i data-feather="book" class="w-6 h-6 text-blue-600"></i>
@@ -94,7 +95,7 @@ $user = $_SESSION['user'];
 
         <!-- My Courses -->
         <a href="courses/my_courses.php"
-           class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+           class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
           <div class="flex items-start justify-between">
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center">
               <i data-feather="layers" class="w-6 h-6 text-emerald-600"></i>
@@ -108,7 +109,7 @@ $user = $_SESSION['user'];
 
         <!-- Progress -->
         <a href="proggres/my_progress.php"
-           class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+           class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
           <div class="flex items-start justify-between">
             <div class="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center">
               <i data-feather="bar-chart-2" class="w-6 h-6 text-amber-600"></i>

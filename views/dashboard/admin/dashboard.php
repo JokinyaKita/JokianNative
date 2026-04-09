@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'superadmin') {
     header("Location: ../login.php?error=access_denied");
     exit;
 }
@@ -11,24 +11,25 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Superadmin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../../assets/css/ui-polish.css" />
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+<body class="ui-grid-bg min-h-screen">
   <!-- Top Header (No Sidebar) -->
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
       <div>
-        <h1 class="text-xl sm:text-2xl font-bold text-slate-800">Admin Dashboard</h1>
+        <h1 class="text-xl sm:text-2xl font-bold text-slate-800">Superadmin Dashboard</h1>
         <p class="text-sm text-slate-500">Manage your platform settings and content</p>
       </div>
 
       <div class="flex items-center gap-3">
         <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-sm">
           <i data-feather="shield" class="w-4 h-4"></i>
-          Admin Access
+          Superadmin Access
         </span>
         <a href="../../../includes/procces/logout.php"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition">
@@ -43,7 +44,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Quick Stats / Info -->
     <section class="mb-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+      <div class="ui-panel rounded-2xl p-5 ui-glow">
         <div class="flex items-start sm:items-center justify-between gap-4 flex-col sm:flex-row">
           <div>
             <h2 class="text-lg font-semibold text-slate-800">Control Center</h2>
@@ -68,7 +69,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Manage Users -->
       <a href="manage/manage_users.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center">
             <i data-feather="users" class="w-6 h-6 text-blue-600"></i>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
       <!-- Manage Courses -->
       <a href="manage/manage_courses.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center">
             <i data-feather="book-open" class="w-6 h-6 text-green-600"></i>
@@ -96,7 +97,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
       <!-- Manage Instructors -->
       <a href="manage/manage_instructors.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center">
             <i data-feather="briefcase" class="w-6 h-6 text-purple-600"></i>
@@ -110,7 +111,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
       <!-- Reports -->
       <a href="reports.php"
-        class="group bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
+        class="group ui-panel rounded-2xl p-6 shadow-sm hover:shadow-md transition hover-lift">
         <div class="flex items-start justify-between">
           <div class="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center">
             <i data-feather="bar-chart-2" class="w-6 h-6 text-red-600"></i>

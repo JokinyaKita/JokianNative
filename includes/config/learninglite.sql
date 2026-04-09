@@ -14,11 +14,22 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `role` enum('student','instructor','admin') DEFAULT 'student',
+  `role` enum('student','instructor','admin','superadmin') DEFAULT 'student',
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Default superadmin account
+-- Email    : superadmin@learninglite.local
+-- Password : SuperAdmin123
+INSERT INTO `users` (`name`, `email`, `password_hash`, `role`)
+VALUES (
+  'Super Admin',
+  'superadmin@learninglite.local',
+  '$2y$12$HkR2BJDnDRcV3oY/NY/J.Omah7Rfgc1Nef.eohH77NHJBWFytctiu',
+  'superadmin'
+);
 
 -- =========================
 -- TABLE: courses
